@@ -1,4 +1,18 @@
 const loginForm = document.querySelector("#login-form");
+const passwordInput = document.querySelector("#password");
+const passwordToggle = document.querySelector("#password-toggle");
+
+passwordToggle?.addEventListener("click", () => {
+	if (!passwordInput) return;
+
+	const isPasswordVisible = passwordInput.type === "text";
+	passwordInput.type = isPasswordVisible ? "password" : "text";
+	passwordToggle.setAttribute("aria-pressed", String(!isPasswordVisible));
+	passwordToggle.setAttribute(
+		"aria-label",
+		isPasswordVisible ? "Tampilkan password" : "Sembunyikan password"
+	);
+});
 
 // =============================================
 // MODE: MOCK (backend dinonaktifkan sementara)

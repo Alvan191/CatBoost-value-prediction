@@ -26,7 +26,7 @@ body {
   min-height: 100vh;
   font-family: "Segoe UI", Arial, sans-serif;
   color: var(--text-main);
-  overflow: hidden;
+  overflow-x: hidden;
 
   background: #f3f4fb;
 }
@@ -108,7 +108,6 @@ body {
   z-index: 1;
 
   min-height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,32 +116,131 @@ body {
 }
 
 /* ========================================
-   GLASS LOGIN CARD
+   SHARED GLASS LOGIN CARD
 ======================================== */
-.login-card {
-  width: 100%;
-  max-width: 420px;
+.login-shell {
+  width: min(100%, 1040px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  overflow: hidden;
 
-  padding: 42px 36px;
-
-  /* More transparent glass */
-  background: rgba(255, 255, 255, 0.38);
-
-  /* Frosted glass blur */
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(35px) saturate(140%);
   -webkit-backdrop-filter: blur(35px) saturate(140%);
-
-  /* Glass edge */
   border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 24px;
-
-  /* Soft floating shadow */
   box-shadow:
     0 25px 70px rgba(65, 75, 120, 0.12),
     0 8px 25px rgba(65, 75, 120, 0.05),
     inset 0 1px 1px rgba(255, 255, 255, 0.85),
     inset 0 -1px 1px rgba(255, 255, 255, 0.15);
+}
 
+/* ========================================
+   BRAND CARD
+======================================== */
+.brand-card {
+  position: relative;
+  isolation: isolate;
+  min-height: 560px;
+  padding: 48px 42px 38px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+
+  color: var(--text-main);
+  background:
+    radial-gradient(ellipse at 18% 8%, rgba(153, 143, 235, 0.12), transparent 48%),
+    linear-gradient(145deg, rgba(244, 242, 255, 0.74), rgba(255, 255, 255, 0.16));
+  border-right: 1px solid rgba(160, 170, 195, 0.2);
+}
+
+.brand-content {
+  position: relative;
+  z-index: 1;
+}
+
+.brand-logo {
+  width: 66px;
+  height: 66px;
+  margin: 0 auto 18px;
+
+  display: grid;
+  place-items: center;
+
+  color: #756dca;
+  background: rgba(113, 104, 238, 0.09);
+  border: 1px solid rgba(113, 104, 238, 0.15);
+  border-radius: 20px;
+}
+
+.brand-logo svg {
+  width: 42px;
+  height: 42px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+}
+
+.brand-eyebrow {
+  margin-bottom: 12px;
+  color: #7772ad;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.brand-card h1 {
+  max-width: 340px;
+  margin: 0 auto 14px;
+  font-size: clamp(25px, 3vw, 33px);
+  line-height: 1.2;
+  letter-spacing: -0.7px;
+}
+
+.brand-description {
+  max-width: 330px;
+  margin: 0 auto;
+  color: #737b91;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.campus-illustration {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: 58px;
+  left: 6%;
+  width: 88%;
+  height: auto;
+}
+
+.brand-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 250px;
+  color: #858ca0;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+/* ========================================
+   GLASS LOGIN CARD
+======================================== */
+.login-card {
+  width: 100%;
+  max-width: 480px;
+  justify-self: center;
+
+  padding: 48px 44px;
   position: relative;
 }
 
@@ -164,10 +262,25 @@ body {
   margin-bottom: 12px;
 }
 
+.login-header h2 {
+  margin-bottom: 12px;
+  color: #2c3348;
+  font-size: 27px;
+  font-weight: 750;
+  letter-spacing: -0.7px;
+}
+
 .login-header p {
   font-size: 14px;
   color: #929bb1;
   line-height: 1.6;
+}
+
+.login-footer {
+  margin-top: 34px;
+  color: #929bb1;
+  font-size: 12px;
+  text-align: center;
 }
 
 /* ========================================
@@ -214,6 +327,54 @@ body {
     border-color 0.25s ease,
     background 0.25s ease,
     box-shadow 0.25s ease;
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 54px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  transform: translateY(-50%);
+
+  display: grid;
+  place-items: center;
+
+  color: #77829a;
+  background: transparent;
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: #3c4b6a;
+  background: rgba(113, 104, 238, 0.08);
+}
+
+.password-toggle:focus-visible {
+  outline: 2px solid #8d91f5;
+  outline-offset: 1px;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
 }
 
 /* Placeholder */
@@ -306,26 +467,94 @@ body {
 /* ========================================
    RESPONSIVE
 ======================================== */
+@media (max-width: 760px) {
+  .login-container {
+    padding: 18px;
+  }
+
+  .login-shell {
+    max-width: 520px;
+    grid-template-columns: 1fr;
+  }
+
+  .brand-card {
+    min-height: 340px;
+    padding: 28px 28px 24px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(160, 170, 195, 0.2);
+  }
+
+  .brand-logo {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 12px;
+    border-radius: 17px;
+  }
+
+  .brand-logo svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-card h1 {
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+
+  .brand-description {
+    max-width: 300px;
+    font-size: 13px;
+  }
+
+  .campus-illustration {
+    bottom: 44px;
+    left: 0;
+    width: 100%;
+  }
+
+  .brand-footer {
+    margin-top: 180px;
+    font-size: 11px;
+  }
+
+  .login-card {
+    max-width: none;
+    padding: 38px 36px;
+  }
+}
+
 @media (max-width: 480px) {
   .login-container {
     padding: 18px;
   }
 
-  .login-card {
-    padding: 34px 24px;
+  .login-shell {
     border-radius: 22px;
   }
 
-  .login-header h1 {
-    font-size: 27px;
+  .brand-card {
+    min-height: 330px;
+    padding: 24px 20px 20px;
+  }
+
+  .login-card {
+    padding: 34px 24px;
+  }
+
+  .login-header h2 {
+    font-size: 24px;
   }
 
   .login-header {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .login-form {
     gap: 20px;
+  }
+
+  .login-footer {
+    margin-top: 26px;
   }
 
   .glow-1 {

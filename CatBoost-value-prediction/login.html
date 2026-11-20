@@ -17,16 +17,51 @@
   </div>
 
   <main class="login-container">
-    <div class="login-card">
+    <div class="login-shell">
+    <section class="brand-card" aria-label="Tentang aplikasi">
+      <div class="brand-content">
+        <div class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <path d="M4 17.5 24 7l20 10.5L24 28 4 17.5Z" />
+            <path d="M12 22v10c7.2 6.1 16.8 6.1 24 0V22L24 28l-12-6Z" />
+            <path d="M43 19v13" />
+          </svg>
+        </div>
+        <p class="brand-eyebrow">CATBOOST AKADEMIK</p>
+        <h1>Prediksi Nilai Akhir Siswa</h1>
+        <p class="brand-description">
+          Rancang bangun aplikasi prediksi nilai akhir siswa berbasis web
+          menggunakan algoritma CatBoost.
+        </p>
+      </div>
 
+      <svg class="campus-illustration" viewBox="0 0 560 250" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="campusSky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#aaa5da" stop-opacity=".2" />
+            <stop offset="1" stop-color="#aaa5da" stop-opacity=".04" />
+          </linearGradient>
+        </defs>
+        <path d="M0 112 280 30l280 82v138H0Z" fill="url(#campusSky)" />
+        <path d="m51 117 229-67 229 67v13H51Z" fill="#aaa5da" fill-opacity=".22" />
+        <path d="M70 130h420v103H70z" fill="#aaa5da" fill-opacity=".14" />
+        <path d="M48 233V126l232-68 232 68v107" fill="none" stroke="#817aad" stroke-opacity=".42" stroke-width="5" />
+        <path d="M65 130h430M81 145h398M80 232h400" fill="none" stroke="#817aad" stroke-opacity=".32" stroke-width="3" />
+        <path d="M108 151h36v34h-36zm62 0h36v34h-36zm62 0h36v34h-36zm62 0h36v34h-36zm62 0h36v34h-36zm62 0h36v34h-36z" fill="#817aad" fill-opacity=".2" stroke="#ffffff" stroke-opacity=".72" stroke-width="3" />
+        <path d="M108 194h36v31h-36zm62 0h36v31h-36zm62 0h36v31h-36zm124 0h36v31h-36zm62 0h36v31h-36z" fill="#817aad" fill-opacity=".2" stroke="#ffffff" stroke-opacity=".72" stroke-width="3" />
+        <path d="M268 184h24v49h-24z" fill="#817aad" fill-opacity=".22" stroke="#ffffff" stroke-opacity=".72" stroke-width="3" />
+        <path d="m24 233 42-22 25 22m354 0 33-28 58 28" fill="none" stroke="#817aad" stroke-opacity=".34" stroke-width="5" />
+      </svg>
+      <span class="brand-footer">Belajar, bertumbuh, berprestasi</span>
+    </section>
+
+    <section class="login-card" aria-labelledby="login-title">
       <div class="login-header">
-
-        <h1>LOGIN</h1>
-        <p>Masuk untuk melanjutkan penggunaan aplikasi</p>
+        <h2 id="login-title">Masuk ke Akun Admin</h2>
+        <p>Silakan login untuk mengakses sistem</p>
       </div>
 
       <form class="login-form" id="login-form">
-
         <div class="form-group">
           <label for="username">Username</label>
           <input
@@ -41,23 +76,38 @@
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Masukkan password"
-            autocomplete="current-password"
-            required
-          >
+          <div class="password-input">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Masukkan password"
+              autocomplete="current-password"
+              required
+            >
+            <button
+              class="password-toggle"
+              id="password-toggle"
+              type="button"
+              aria-label="Tampilkan password"
+              aria-pressed="false"
+            >
+              <svg class="eye-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <button type="submit" class="login-button">
           Masuk
-          <span>→</span>
+          <span aria-hidden="true">→</span>
         </button>
-
       </form>
 
+      <p class="login-footer">© 2025 Prediksi Nilai Akhir Siswa</p>
+    </section>
     </div>
   </main>
 
