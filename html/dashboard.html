@@ -8,6 +8,13 @@
     <title>Dashboard - CatBoost Akademik</title>
     <link rel="stylesheet" href="../css/dashboard.css">
     <script src="../js/dashboard.js" defer></script>
+    <script>
+        // Fix paths for GitHub Pages / direct file access
+        if (window.location.protocol === 'file:') {
+            document.querySelector('link[rel="stylesheet"]').href = 'css/dashboard.css';
+            document.querySelector('script[src*="dashboard.js"]').src = 'js/dashboard.js';
+        }
+    </script>
 </head>
 
 <body>
