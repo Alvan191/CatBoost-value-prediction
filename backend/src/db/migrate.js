@@ -3,14 +3,6 @@ import { pathToFileURL } from 'url';
 import { resolve } from 'path';
 
 const migrations = [
-  `CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    role ENUM('admin', 'teacher') DEFAULT 'teacher',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-  )`,
-
   `CREATE TABLE IF NOT EXISTS students (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nis VARCHAR(20) UNIQUE NOT NULL,
@@ -19,19 +11,6 @@ const migrations = [
     major VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-  )`,
-
-  `CREATE TABLE IF NOT EXISTS academic_records (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    student_id INT NOT NULL,
-    assignment_score DECIMAL(5,2) NOT NULL,
-    uts_score DECIMAL(5,2) NOT NULL,
-    attendance DECIMAL(5,2) NOT NULL,
-    participation DECIMAL(5,2) NOT NULL,
-    semester VARCHAR(20) NOT NULL,
-    academic_year VARCHAR(10) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
   )`,
 
   `CREATE TABLE IF NOT EXISTS predictions (

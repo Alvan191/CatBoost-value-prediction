@@ -39,9 +39,9 @@ Persyaratan: Docker Desktop, Node.js 20+, dan Python 3.12+ (diuji dengan Python 
 
 MySQL menggunakan nilai default dari `docker-compose.yaml`: host `127.0.0.1`, port `3309`,
 database `catboost_db`, user `mysql`, dan password `mysql`. Jika nilainya diubah, atur variabel
-`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, dan `DB_ROOT_PASSWORD` di
-`backend/.env`. Flask dan migrasi membaca konfigurasi tersebut. Pastikan MySQL berstatus `healthy`
-(`docker compose ps`) sebelum menjalankan migrasi.
+`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, dan `DB_PASSWORD` di `backend/.env`. Flask dan
+migrasi membaca konfigurasi tersebut. Pastikan MySQL berstatus `healthy` (`docker compose ps`)
+sebelum menjalankan migrasi.
 
 ## Skema prediksi
 

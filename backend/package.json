@@ -1,26 +1,14 @@
 {
-  "name": "catboost-backend",
+  "name": "catboost-db-migrations",
   "version": "1.0.0",
-  "description": "Backend API for CatBoost Academic Value Prediction",
-  "main": "src/server.js",
+  "description": "MySQL migrations for the CatBoost Flask application",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "node --watch src/server.js",
-    "db:migrate": "node src/db/migrate.js",
-    "db:seed": "node src/db/seed.js"
+    "db:migrate": "node src/db/migrate.js"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "mysql2": "^3.10.0",
-    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2",
-    "joi": "^17.13.3",
-    "python-shell": "^5.0.0"
+    "mysql2": "^3.10.0"
   },
-  "devDependencies": {
-    "eslint": "^9.5.0"
-  }
+  "private": true
 }
