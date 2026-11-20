@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3f4fb">
+    <title>Uji Prediksi - CatBoost Akademik</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/prediksi.css">
+    <script src="../js/prediksi.js" defer></script>
+</head>
+
+<body>
+    <div class="background" aria-hidden="true">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+    </div>
+
+    <main class="dashboard">
+        <header class="topbar">
+            <a class="brand" href="dashboard.html" aria-label="Dashboard CatBoost Akademik">
+                <span class="brand-mark" aria-hidden="true">C</span>
+                <span class="brand-copy"><strong>CATBOOST</strong><small>AKADEMIK</small></span>
+            </a>
+            <div class="admin-profile">
+                <a class="nav-link" href="dashboard.html">← Dashboard</a>
+                <span class="profile-avatar" id="profile-initial">A</span>
+                <span class="admin-copy"><strong id="admin-name">Administrator</strong><small>Administrator</small></span>
+                <button class="logout-button" id="logout-button" type="button" aria-label="Keluar" title="Keluar"><span
+                        aria-hidden="true">↗</span></button>
+            </div>
+        </header>
+
+        <section class="dashboard-content" aria-labelledby="page-title">
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow"><span>UJI MODEL</span><span class="ai-badge"><span
+                                class="ai-indicator"></span>CATBOOST ML</span></p>
+                    <h1 id="page-title">Uji prediksi nilai akhir</h1>
+                    <p class="page-subtitle">Isi data akademik siswa, lalu lihat nilai akhir yang diprediksi model.</p>
+                </div>
+            </div>
+
+            <div class="predict-grid">
+                <section class="glass-panel" aria-labelledby="form-title">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="panel-kicker">INPUT</p>
+                            <h2 id="form-title">Data akademik</h2>
+                        </div>
+                        <button class="ghost-button" id="fill-example" type="button">Isi contoh</button>
+                    </div>
+
+                    <form class="form-body" id="predict-form" novalidate>
+                        <div class="field-grid">
+                            <div class="field full">
+                                <label for="nama">Nama siswa <em>(opsional, tidak dipakai model)</em></label>
+                                <input id="nama" name="nama" type="text" placeholder="Contoh: Budi">
+                            </div>
+
+                            <div class="field">
+                                <label for="nilai_tugas">Nilai tugas (0-100)</label>
+                                <input id="nilai_tugas" name="nilai_tugas" type="number" min="0" max="100" step="0.1"
+                                    inputmode="decimal" required>
+                            </div>
+                            <div class="field">
+                                <label for="nilai_uts">Nilai UTS (0-100)</label>
+                                <input id="nilai_uts" name="nilai_uts" type="number" min="0" max="100" step="0.1"
+                                    inputmode="decimal" required>
+                            </div>
+                            <div class="field">
+                                <label for="kehadiran">Kehadiran (%)</label>
+                                <input id="kehadiran" name="kehadiran" type="number" min="0" max="100" step="0.1"
+                                    inputmode="decimal" required>
+                            </div>
+                            <div class="field">
+                                <label for="keaktifan">Keaktifan (0-100)</label>
+                                <input id="keaktifan" name="keaktifan" type="number" min="0" max="100" step="0.1"
+                                    inputmode="decimal" required>
+                            </div>
+
+                            <div class="field">
+                                <label for="kelas">Kelas</label>
+                                <select id="kelas" name="kelas" required></select>
+                            </div>
+                            <div class="field">
+                                <label for="jurusan">Jurusan</label>
+                                <select id="jurusan" name="jurusan" required>
+                                    <option value="IPA">IPA</option>
+                                    <option value="IPS">IPS</option>
+                                </select>
+                            </div>
+                            <div class="field full">
+                                <label for="mata_pelajaran">Mata pelajaran</label>
+                                <select id="mata_pelajaran" name="mata_pelajaran" required></select>
+                            </div>
+                        </div>
+
+                        <p class="form-error" id="form-error" role="alert" hidden></p>
+                        <button class="primary-button" id="submit-button" type="submit">Prediksi nilai akhir</button>
+                    </form>
+                </section>
+
+                <section class="glass-panel" aria-labelledby="result-title">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="panel-kicker">OUTPUT</p>
+                            <h2 id="result-title">Hasil prediksi</h2>
+                        </div>
+                        <span class="panel-symbol" aria-hidden="true">↗</span>
+                    </div>
+
+                    <div class="result-body">
+                        <div class="empty-state" id="result-empty"><span class="empty-icon"
+                                aria-hidden="true">—</span><strong>Belum ada prediksi</strong><small>Isi form lalu tekan
+                                tombol prediksi.</small></div>
+
+                        <div class="result-card" id="result-card" hidden>
+                            <small>PREDIKSI NILAI AKHIR</small>
+                            <div class="result-number" id="result-value">--</div>
+                            <p class="result-note" id="result-note"></p>
+                        </div>
+
+                        <div class="history" id="history" hidden>
+                            <p class="panel-kicker">PREDIKSI TERBARU (SESI INI)</p>
+                            <div class="prediction-table-wrap history-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Nama siswa</th>
+                                            <th>Mapel</th>
+                                            <th>Jam</th>
+                                            <th>Prediksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="history-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <footer class="dashboard-footer">Hasil prediksi merupakan informasi pendukung, bukan nilai akhir resmi.
+            </footer>
+        </section>
+    </main>
+</body>
+
+</html>

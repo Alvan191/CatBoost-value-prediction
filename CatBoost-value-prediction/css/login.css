@@ -1,0 +1,351 @@
+
+/* ========================================
+   RESET & VARIABLES
+======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #7168ee;
+  --primary-hover: #5e55df;
+
+  --text-main: #2c3348;
+  --text-muted: #929bb1;
+  --text-label: #59647d;
+
+  --border: rgba(160, 170, 195, 0.28);
+}
+
+/* ========================================
+   BODY
+======================================== */
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text-main);
+  overflow: hidden;
+
+  background: #f3f4fb;
+}
+
+/* ========================================
+   BACKGROUND
+======================================== */
+.background {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8f9ff 0%,
+      #f1f2fa 45%,
+      #f7f7fc 100%
+    );
+}
+
+/* Common glow */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+
+  filter: blur(100px);
+}
+
+/* ========================================
+   BLUE GLOW - TOP LEFT
+======================================== */
+.glow-1 {
+  width: 550px;
+  height: 550px;
+
+  background: #8ca7ff;
+  opacity: 0.48;
+
+  top: -160px;
+  left: -140px;
+}
+
+/* ========================================
+   LAVENDER GLOW - BOTTOM RIGHT
+======================================== */
+.glow-2 {
+  width: 560px;
+  height: 560px;
+
+  background: #b7a0ff;
+  opacity: 0.42;
+
+  bottom: -160px;
+  right: -120px;
+}
+
+/* ========================================
+   CYAN GLOW - RIGHT CENTER
+======================================== */
+.glow-3 {
+  width: 430px;
+  height: 430px;
+
+  background: #9cdef5;
+  opacity: 0.35;
+
+  top: 34%;
+  left: 58%;
+}
+
+/* ========================================
+   LOGIN CONTAINER
+======================================== */
+.login-container {
+  position: relative;
+  z-index: 1;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+}
+
+/* ========================================
+   GLASS LOGIN CARD
+======================================== */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 42px 36px;
+
+  /* More transparent glass */
+  background: rgba(255, 255, 255, 0.38);
+
+  /* Frosted glass blur */
+  backdrop-filter: blur(35px) saturate(140%);
+  -webkit-backdrop-filter: blur(35px) saturate(140%);
+
+  /* Glass edge */
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 24px;
+
+  /* Soft floating shadow */
+  box-shadow:
+    0 25px 70px rgba(65, 75, 120, 0.12),
+    0 8px 25px rgba(65, 75, 120, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.15);
+
+  position: relative;
+}
+
+/* ========================================
+   LOGIN HEADER
+======================================== */
+.login-header {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.login-header h1 {
+  font-size: 30px;
+  font-weight: 750;
+  letter-spacing: -1px;
+
+  color: #2c3348;
+
+  margin-bottom: 12px;
+}
+
+.login-header p {
+  font-size: 14px;
+  color: #929bb1;
+  line-height: 1.6;
+}
+
+/* ========================================
+   FORM
+======================================== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+/* Label */
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #59647d;
+}
+
+/* Input */
+.form-group input {
+  width: 100%;
+  height: 54px;
+
+  padding: 0 17px;
+
+  border: 1px solid rgba(160, 170, 195, 0.28);
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.48);
+
+  color: #303950;
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Placeholder */
+.form-group input::placeholder {
+  color: #a5aec0;
+}
+
+/* Hover */
+.form-group input:hover {
+  border-color: rgba(130, 140, 190, 0.42);
+  background: rgba(255, 255, 255, 0.58);
+}
+
+/* Focus */
+.form-group input:focus {
+  border-color: #8d91f5;
+  background: rgba(255, 255, 255, 0.72);
+
+  box-shadow:
+    0 0 0 4px rgba(113, 104, 238, 0.10);
+}
+
+/* ========================================
+   LOGIN BUTTON
+======================================== */
+.login-button {
+  width: 100%;
+  height: 54px;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 13px;
+
+  background: linear-gradient(
+    135deg,
+    #858db8 0%,
+    #747da9 100%
+  );
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  box-shadow:
+    0 6px 18px rgba(108, 119, 165, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  transition: all 0.25s ease;
+}
+
+.login-button span {
+  font-size: 18px;
+  opacity: 0.85;
+
+  transition: transform 0.25s ease;
+}
+
+.login-button:hover {
+  background: linear-gradient(
+    135deg,
+    #7983b1 0%,
+    #68739d 100%
+  );
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 9px 22px rgba(108, 119, 165, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.login-button:hover span {
+  transform: translateX(3px);
+}
+
+.login-button:active {
+  transform: translateY(0);
+  box-shadow:
+    0 3px 10px rgba(108, 119, 165, 0.16);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 18px;
+  }
+
+  .login-card {
+    padding: 34px 24px;
+    border-radius: 22px;
+  }
+
+  .login-header h1 {
+    font-size: 27px;
+  }
+
+  .login-header {
+    margin-bottom: 32px;
+  }
+
+  .login-form {
+    gap: 20px;
+  }
+
+  .glow-1 {
+    width: 350px;
+    height: 350px;
+
+    top: -100px;
+    left: -150px;
+  }
+
+  .glow-2 {
+    width: 350px;
+    height: 350px;
+
+    bottom: -100px;
+    right: -140px;
+  }
+
+  .glow-3 {
+    width: 280px;
+    height: 280px;
+  }
+}

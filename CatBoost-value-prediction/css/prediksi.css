@@ -1,0 +1,198 @@
+/* Dipakai bersama dashboard.css */
+.nav-link {
+    margin-right: 6px;
+    padding: 8px 11px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.38);
+    color: #6d739f;
+    font-size: 10px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.predict-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.9fr);
+    align-items: start;
+    gap: 18px;
+}
+
+.form-body {
+    padding: 18px 20px 20px;
+}
+
+.field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    color: var(--label);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.field label em {
+    color: var(--muted);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    height: 38px;
+    padding: 0 11px;
+    border: 1px solid var(--glass-edge);
+    border-radius: 10px;
+    background: #f8f9fc;
+    color: var(--ink);
+    font: inherit;
+    font-size: 12px;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: var(--blue);
+    outline: 3px solid rgba(113, 104, 238, 0.18);
+    background: #fff;
+}
+
+.field input.invalid {
+    border-color: #d98a98;
+    background: #fff7f8;
+}
+
+.form-error {
+    margin: 14px 0 0;
+    padding: 9px 11px;
+    border: 1px solid #ecc3cb;
+    border-radius: 10px;
+    background: #fff4f6;
+    color: #b5485d;
+    font-size: 11px;
+}
+
+.primary-button,
+.ghost-button {
+    cursor: pointer;
+    font: inherit;
+    font-weight: 650;
+}
+
+.primary-button {
+    width: 100%;
+    height: 42px;
+    margin-top: 16px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #858db8, #a095d0);
+    color: #fff;
+    font-size: 12px;
+    box-shadow: 0 8px 20px rgba(133, 141, 184, 0.3);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.primary-button:hover {
+    transform: translateY(-1px);
+}
+
+.primary-button:disabled {
+    cursor: wait;
+    opacity: 0.6;
+    transform: none;
+}
+
+.ghost-button {
+    padding: 7px 10px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.5);
+    color: #737b9e;
+    font-size: 10px;
+}
+
+.ghost-button:hover {
+    background: #fff;
+}
+
+.result-body {
+    padding: 4px 0 6px;
+}
+
+.result-card {
+    margin: 16px 20px;
+    padding: 18px;
+    border: 1px solid rgba(133, 141, 184, 0.16);
+    border-radius: 14px;
+    background: #f8f9fc;
+    text-align: center;
+}
+
+.result-card small {
+    color: #929bb1;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+.result-number {
+    margin: 8px 0 6px;
+    color: #4a526e;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.result-note {
+    margin: 0;
+    color: #8c95aa;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.history {
+    padding: 4px 20px 6px;
+}
+
+.history-wrap {
+    padding: 0;
+}
+
+.history td {
+    padding: 9px 8px;
+    border-bottom: 1px solid rgba(160, 170, 195, 0.14);
+    color: #58617a;
+    font-size: 10px;
+}
+
+@media (max-width: 760px) {
+    .predict-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .field-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-link {
+        display: none;
+    }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3f4fb">
+    <title>Dashboard - CatBoost Akademik</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/prediksi.css">
+    <script src="../js/dashboard.js" defer></script>
+</head>
+
+<body>
+    <div class="background" aria-hidden="true">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+    </div>
+
+    <main class="dashboard">
+        <header class="topbar">
+            <a class="brand" href="dashboard.html" aria-label="Dashboard CatBoost Akademik">
+                <span class="brand-mark" aria-hidden="true">C</span>
+                <span class="brand-copy"><strong>CATBOOST</strong><small>AKADEMIK</small></span>
+            </a>
+            <div class="admin-profile">
+                <a class="nav-link" href="prediksi.html">Uji prediksi</a>
+                <span class="profile-avatar" id="profile-initial">A</span>
+                <span class="admin-copy"><strong
+                        id="admin-name">Administrator</strong><small>Administrator</small></span>
+                <button class="logout-button" id="logout-button" type="button" aria-label="Keluar" title="Keluar"><span
+                        aria-hidden="true">↗</span></button>
+            </div>
+        </header>
+
+        <section class="dashboard-content" aria-labelledby="page-title">
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow"><span>SMA NEGERI 1 UMBUNASI</span><span class="ai-badge"><span
+                                class="ai-indicator"></span>CATBOOST ML</span></p>
+                    <h1 id="page-title">Dashboard akademik</h1>
+                    <p class="page-subtitle">Ringkasan data dan prediksi nilai akhir siswa.</p>
+                </div>
+                <div class="date-stamp"><span aria-hidden="true">◷</span><span id="today-date">Hari ini</span></div>
+            </div>
+
+            <div class="summary-grid">
+                <article class="summary-card students-card">
+                    <div class="card-topline"><span class="card-icon" aria-hidden="true">S</span><span
+                            class="card-kicker">RIWAYAT</span></div>
+                    <h2>Prediksi tersimpan</h2>
+                    <div class="metric-value" id="prediction-count">-- <span>prediksi</span></div>
+                    <p>Total hasil prediksi di database</p>
+                </article>
+                <article class="summary-card academics-card">
+                    <div class="card-topline"><span class="card-icon" aria-hidden="true">A</span><span
+                            class="card-kicker">TERBARU</span></div>
+                    <h2>Prediksi terakhir</h2>
+                    <div class="metric-value" id="latest-score">-- <span>nilai</span></div>
+                    <p>Hasil prediksi paling baru</p>
+                </article>
+            </div>
+
+            <div class="details-grid">
+                <section class="glass-panel prediction-panel" aria-labelledby="prediction-title">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="panel-kicker">PEMANTAUAN</p>
+                            <h2 id="prediction-title">Prediksi terbaru</h2>
+                        </div>
+                        <span class="panel-symbol" aria-hidden="true">↗</span>
+                    </div>
+                    <div class="prediction-table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nama siswa</th>
+                                    <th>Mata pelajaran</th>
+                                    <th>Tanggal</th>
+                                    <th>Prediksi nilai</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="empty-state" colspan="4"><span class="empty-icon"
+                                            aria-hidden="true">—</span><strong>Belum ada prediksi</strong><small>Hasil
+                                            prediksi akan tampil di sini setelah data tersedia.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="glass-panel variables-panel" aria-labelledby="variables-title">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="panel-kicker">CATBOOST REGRESSOR</p>
+                            <h2 id="variables-title">Variabel penelitian</h2>
+                        </div>
+                        <span class="feature-count">07 FITUR</span>
+                    </div>
+                    <ul class="variable-list">
+                        <li><span class="variable-number">01</span><span>Nilai tugas</span><span
+                                class="variable-dot numeric"></span></li>
+                        <li><span class="variable-number">02</span><span>Nilai UTS</span><span
+                                class="variable-dot numeric"></span></li>
+                        <li><span class="variable-number">03</span><span>Kehadiran</span><span
+                                class="variable-dot numeric"></span></li>
+                        <li><span class="variable-number">04</span><span>Keaktifan</span><span
+                                class="variable-dot numeric"></span></li>
+                        <li><span class="variable-number">05</span><span>Kelas</span><span
+                                class="variable-dot categorical"></span></li>
+                        <li><span class="variable-number">06</span><span>Jurusan</span><span
+                                class="variable-dot categorical"></span></li>
+                        <li><span class="variable-number">07</span><span>Mata pelajaran</span><span
+                                class="variable-dot categorical"></span></li>
+                    </ul>
+                    <div class="target-variable"><span class="target-symbol">Y</span><span><small>VARIABEL
+                                TARGET</small><strong>Nilai akhir</strong></span></div>
+                </section>
+            </div>
+            <footer class="dashboard-footer">Hasil prediksi merupakan informasi pendukung, bukan nilai akhir resmi.
+            </footer>
+        </section>
+    </main>
+</body>
+
+</html>
