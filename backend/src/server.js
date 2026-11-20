@@ -40,11 +40,9 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Serve frontend static files from project root
-app.use(express.static(FRONTEND_DIR));
-
-// Redirect root to login page
-app.get('/', (req, res) => res.redirect('/login.html'));
+// TODO: Aktifkan kembali setelah backend selesai diubah
+// app.use(express.static(FRONTEND_DIR));
+// app.get('/', (req, res) => res.redirect('/login.html'));
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });

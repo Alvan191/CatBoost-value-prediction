@@ -1,4 +1,22 @@
+// =============================================
+// MODE: MOCK (backend dinonaktifkan sementara)
+// Aktifkan kembali saat backend sudah siap
+// =============================================
+const MOCK_MODE = true;
 const API_BASE = "http://localhost:3000/api";
+
+const MOCK_DATA = {
+    user: { id: 1, username: "admin", role: "admin" },
+    students: { pagination: { total: 10 } },
+    academics: { pagination: { total: 10 } },
+    predictions: {
+        data: [
+            { student_name: "Ahmad Fauzi",    created_at: new Date(), predicted_score: 87.5 },
+            { student_name: "Siti Nurhaliza", created_at: new Date(), predicted_score: 91.2 },
+            { student_name: "Budi Santoso",   created_at: new Date(), predicted_score: 78.3 },
+        ]
+    }
+};
 
 function getToken() {
     return localStorage.getItem("catboost-token");
@@ -10,6 +28,8 @@ function getUser() {
 }
 
 async function checkAuth() {
+    if (MOCK_MODE) return MOCK_DATA.user;
+
     const token = getToken();
     if (!token) {
         window.location.replace("login.html");
@@ -63,6 +83,12 @@ async function init() {
 }
 
 async function loadDashboardData() {
+    if (MOCK_MODE) {
+        updateSummaryCards(MOCK_DATA.students, MOCK_DATA.academics);
+        updatePredictionsTable(MOCK_DATA.predictions);
+        return;
+    }
+
     const token = getToken();
 
     try {
