@@ -1,0 +1,32 @@
+{
+  "fitur": [
+    "nilai_tugas",
+    "nilai_uts",
+    "kehadiran",
+    "keaktifan",
+    "kelas",
+    "jurusan",
+    "mata_pelajaran"
+  ],
+  "fitur_kategorikal": [
+    "kelas",
+    "jurusan",
+    "mata_pelajaran"
+  ],
+  "target": "nilai_akhir",
+  "params": {
+    "iterations": 1000,
+    "learning_rate": 0.05,
+    "depth": 6,
+    "l2_leaf_reg": 3,
+    "loss_function": "RMSE",
+    "random_seed": 42,
+    "verbose": 0
+  },
+  "metrik_uji": {
+    "MAE": 2.2802,
+    "MSE": 8.0278,
+    "RMSE": 2.8333,
+    "R2": 0.8391
+  }
+}

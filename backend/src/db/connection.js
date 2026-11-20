@@ -11,7 +11,7 @@ async function ensureDatabaseExists() {
     host: process.env.DB_HOST || 'localhost',
     port: process.env.DB_PORT || 3309,
     user: 'root',
-    password: process.env.DB_PASSWORD || 'mysql',  // MYSQL_ROOT_PASSWORD
+    password: process.env.DB_ROOT_PASSWORD || 'mysql',
     waitForConnections: true,
     connectionLimit: 1,
     queueLimit: 0

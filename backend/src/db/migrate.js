@@ -36,7 +36,8 @@ const migrations = [
 
   `CREATE TABLE IF NOT EXISTS predictions (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    student_id INT NOT NULL,
+    student_id INT NULL,
+    student_name VARCHAR(100) NULL,
     predicted_score DECIMAL(5,2) NOT NULL,
     actual_score DECIMAL(5,2) NULL,
     features_json JSON NOT NULL,
@@ -52,6 +53,29 @@ export async function runMigrations() {
     for (const migration of migrations) {
       await connection.execute(migration);
     }
+
+    const [studentIdColumns] = await connection.execute(
+      `SELECT IS_NULLABLE FROM information_schema.COLUMNS
+       WHERE TABLE_SCHEMA = DATABASE()
+       AND TABLE_NAME = 'predictions'
+       AND COLUMN_NAME = 'student_id'`
+    );
+    if (studentIdColumns.length > 0 && studentIdColumns[0].IS_NULLABLE === 'NO') {
+      await connection.execute('ALTER TABLE predictions MODIFY COLUMN student_id INT NULL');
+    }
+
+    const [studentNameColumns] = await connection.execute(
+      `SELECT COLUMN_NAME FROM information_schema.COLUMNS
+       WHERE TABLE_SCHEMA = DATABASE()
+       AND TABLE_NAME = 'predictions'
+       AND COLUMN_NAME = 'student_name'`
+    );
+    if (studentNameColumns.length === 0) {
+      await connection.execute(
+        'ALTER TABLE predictions ADD COLUMN student_name VARCHAR(100) NULL AFTER student_id'
+      );
+    }
+
     console.log('Migrations completed successfully');
   } finally {
     connection.release();
